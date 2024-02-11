@@ -15,45 +15,56 @@
     </div>
 
     <div class="container">
-        <div class="bingo-numbers">
-            <div class="turn-container">
-                <h2 class="turns">Turno</h2>
-                <p id="turns"></p>
-            </div>
-            <div class="bingo-call">
-                <h2 class="turns">Esfera</h2>
-
-                <h2 id="bingo-call-number"></h2>
-                <button id="verify" onclick=bingoCall()>Sacar número</button>
-            </div>
-        </div>
-        
-        <div class="bingo-card">
-            <h2 id="player-name0"></h2>
-             <div id="number-list0">
-            </div>
-        </div>
-
-
-        <div class="bingo-card">
-            <h2 id="player-name1"></h2>
-            <div id="number-list1">
-            </div>
-        </div>
-        <div class="bingo-card">
-            <h2 id="player-name2"></h2>
-            <div id="number-list2">
-            </div>
-        </div>
-        <div class="bingo-card">
-            <h2 id="player-name3"></h2>
-            <div id="number-list3">
-            </div>
-        </div>
-
 
         
-        <script src='game.js'></script>
+        <div class="bingo-card-container">
+            <div class="bingo-card">
+
+                <h2 id="player-name0"></h2>
+                <div id="number-list0">
+                </div>
+            </div>
+
+
+            <div class="bingo-card">
+                <h2 id="player-name1"></h2>
+                <div id="number-list1">
+                </div>
+            </div>
+            <div class="bingo-card">
+                <h2 id="player-name2"></h2>
+                <div id="number-list2">
+                </div>
+            </div>
+            <div class="bingo-card">
+                <h2 id="player-name3"></h2>
+                <div id="number-list3">
+                </div>
+            </div>
+            <div class="bingo-numbers">
+                <div class="turn-container">
+                    <h2 class="turns">Turno: </h2>
+                    <p id="turns"></p>
+                </div>
+                <div class="bingo-call">
+                    <h2 class="turns">Esfera</h2>
+                    
+                    <h2 id="bingo-call-number"></h2>
+                    
+                </div>
+                <button id="verify" onclick=getBingoBall()>Sacar número</button>
+                <a href="game.html">
+                    <button class="empty-button" >Reiniciar partida</button>
+                </a>
+                <a href="../index.html">
+                    <button class="empty-button" >Volver al inicio</button>
+                </a>
+            </div>
+        </div>
+       
+
+    </div>    
+    <script src='game.js'></script>
 </body>
 
 </html>

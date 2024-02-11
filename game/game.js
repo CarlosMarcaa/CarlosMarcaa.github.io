@@ -50,7 +50,7 @@ class board {
         const BingoBoard = document.createElement('div');
         BingoBoard.className = 'bingo-card';
         const playerName =  document.getElementById(`player-name${this.boardnumber}`);
-        playerName.innerText = this.getName();
+        playerName.innerText = `${this.getName()} ${this.score}pts.`;
 
         if (this.n == 5) {
             document.getElementById(`number-list${this.boardnumber}`).className = 'number-list-5';
@@ -84,8 +84,9 @@ class board {
     addCheckedNumbers(n){
         if (this.verifyNumber(n)){
             this.checkedNumbers.push(n);
-        }else{
 
+            const numberVerify = document.getElementById(`${this.boardnumber*25 + (this.numbers.indexOf(n))}`);
+            numberVerify.className = 'number-validate';
         }
     }
     findNumberPosition(n) {    //Returns the position of the number in an array as [i,j]
@@ -150,6 +151,8 @@ class board {
             console.log("---------"+this.name + " Tiene una carton lleno, gana 5 puntos!---------")
                 this.score = this.score + 5;
         }
+        const playerName =  document.getElementById(`player-name${this.boardnumber}`);
+        playerName.innerText = `${this.getName()}   ${this.score}pts.`;
 
     }
 
@@ -181,23 +184,94 @@ function generateRandomNumberList(){
     }
     return randomNumbersList; 
 }
+randomNumbersList = []
+var iterations = 0;
 
-function startGame(){
+
     boardSize = generateBoardSize();
     randomNumbersList = generateRandomNumberList();
     player0name = localStorage.getItem('player1');
     player1name = localStorage.getItem('player2');
     player2name = localStorage.getItem('player3');
     player3name = localStorage.getItem('player4');
-    board0 = new board(boardSize, player0name, 0 );
-    board1 = new board(boardSize, player1name, 1);
-    board2 = new board(boardSize, player2name, 2);
-    board3 = new board(boardSize, player3name, 3);
+    board0 = new board(boardSize, player0name+ " ----  ", 0 );
+    board1 = new board(boardSize, player1name+ " ----  ", 1);
+    board2 = new board(boardSize, player2name+ " ----  ", 2);
+    board3 = new board(boardSize, player3name+ " ----  ", 3);
 
     board0.generateBoard();
     board1.generateBoard();
     board2.generateBoard();
     board3.generateBoard();
+
+    boardList = [];
+    boardList.push(board0);
+    boardList.push(board1);
+    boardList.push(board2);
+    boardList.push(board3);
+
+    var ballNumberToShow = document.getElementById("bingo-call-number");
+    var turn = document.getElementById("turns");
+    turn.innerText = iterations;
+    ballNumberToShow.innerText = 0;
+function getBingoBall(){
+    if (iterations < 25){
+        const ballNumber = randomNumbersList[iterations];
+        turn.innerText = iterations + 1;
+        ballNumberToShow.innerText = ballNumber;
+
+        board0.addCheckedNumbers(ballNumber);
+        board1.addCheckedNumbers(ballNumber);
+        board2.addCheckedNumbers(ballNumber);
+        board3.addCheckedNumbers(ballNumber);
+
+        board0.checkMatrix(ballNumber);
+        board1.checkMatrix(ballNumber);
+        board2.checkMatrix(ballNumber);
+        board3.checkMatrix(ballNumber);
+
+
+        iterations++;
+    }
+   
 }
 
-startGame();
+function finishGame(){
+    
+    for (let i =0; i < 5; i++){
+        
+        const boardPointer = boardList[i];
+
+        const wins =0;
+        if (boardPointer.name == findHighestScore(boardList).name){
+            wins = 1;
+        }
+
+        const statistics = generatePlayerStatistics(boardPointer);
+        const oldStatistics = localStorage.getItem(`${boardPointer.name}`);
+        if (!oldStatistics === 'undefined'){
+            oldStatistics =  statistics ? JSON.parse(statistics) : [];
+            oldStatistics.score = oldStatistics.score + boardPointer.score;
+            oldStatistics.wins = oldStatistics.wins + wins;
+            statistics = oldStatistics;
+        }
+        
+        localStorage.setItem( boardPointer.name, statistics);
+    }
+    }
+    
+
+
+generatePlayerStatistics(board){
+    const wins =0;
+    const score = board.score;
+    const name = board.name;
+    if (board.name == findHighestScore(boardList).name){
+        wins = 1;
+    }
+    const list = {
+        score: score,
+        wins: wins
+    }
+    return list;
+  }
