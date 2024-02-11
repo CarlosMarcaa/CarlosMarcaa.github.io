@@ -1,6 +1,6 @@
 
 class board {
-    constructor(n, name){
+    constructor(n, name,boardnumber){
     this.n = n;
     this.length = n*n;
     this.numbers = [];
@@ -9,7 +9,8 @@ class board {
     this.score = 0;
     this.name = name;
     this.flagLeftDiagonal = false;
-    this.flagRightDiagonal = false;
+    this.flagRightDiagonal = false; 
+    this.boardnumber = boardnumber;
     }
     
     getName(){
@@ -24,7 +25,7 @@ class board {
             // Ajusta el rango para obtener un número entre 1 y 50
             var numeroAleatorio = Math.floor(numeroAleatorioDecimal * 50) + 1;
             if (!this.getNumbers().includes(numeroAleatorio)) {
-                this.numbers.push(numeroAleatorio)                
+                this.numbers.push(numeroAleatorio);              
                 i++;
             }           
         }
@@ -37,7 +38,27 @@ class board {
             }
             this.matrix.push(fila);
         }
+        const numbers = this.getNumbers();
+        const container = document.getElementById(`number-list${this.boardnumber}`);
+        numbers.forEach((number) => {
+            const div = document.createElement('div');
+            div.className = 'number';
+            //div.id = `${this.boardnumber*25 + (numbers.indexOf(number))}`;
+            div.textContent = `${number}`;
+            container.appendChild(div);
+        });
+        const BingoBoard = document.createElement('div');
+        BingoBoard.className = 'bingo-card';
+        const playerName =  document.getElementById('player-name');
+        playerName.innerText = this.getName();
 
+        if (this.n == 5) {
+            document.getElementById('number-list').className = 'number-list-5';
+        } else if (this.n == 4) {
+            document.getElementById('number-list').className = 'number-list-4';
+        } else if (this.n == 3) {
+            document.getElementById('number-list').className = 'number-list-3';
+        }
     }
 
     printMatrix(){
@@ -64,7 +85,7 @@ class board {
         if (this.verifyNumber(n)){
             this.checkedNumbers.push(n);
         }else{
-            console.log("Number " + n + " is not contained in the board")
+
         }
     }
     findNumberPosition(n) {    //Returns the position of the number in an array as [i,j]
@@ -137,12 +158,46 @@ class board {
     }
 
 }
-
-var board1 = new board(3, "holga");
-board1.generateBoard();
-board1.printMatrix();
-for (let i = 0; i < 51; i++){
-    
-    board1.addCheckedNumbers(i);
-    board1.checkMatrix(i);
+function generateBoardSize() {
+    // Generate a decimal number between 0 (inclusive) and 1 (exclusive)
+    const decimalNumber = Math.random();
+  
+    // Convert the decimal number to an integer between 3 and 6 (6 is exclusive)
+    const randomNumber = Math.floor(decimalNumber * (5 - 3 + 1) + 3);
+  
+    return randomNumber;
+  }
+function generateRandomNumberList(){
+    randomNumbersList = [];
+    for (let i = 0; i < 26;) {     //Creates the list with all the numbers contained on the board
+        var numeroAleatorioDecimal = Math.random();
+        // Ajusta el rango para obtener un número entre 1 y 50
+        var numeroAleatorio = Math.floor(numeroAleatorioDecimal * 50) + 1;
+        if (!randomNumbersList.includes(numeroAleatorio)) {
+            randomNumbersList.push(numeroAleatorio)                
+            i++;
+        }
+                  
+    }
+    return randomNumbersList; 
 }
+
+function startGame(){
+    boardSize = generateBoardSize();
+    randomNumbersList = generateRandomNumberList();
+    player0name = localStorage.getItem('player1');
+    player1name = localStorage.getItem('player2');
+    player2name = localStorage.getItem('player3');
+    player3name = localStorage.getItem('player4');
+    board0 = new board(boardSize, player0name, 0 );
+    board1 = new board(boardSize, player1name, 1);
+    board2 = new board(boardSize, player2name, 2);
+    board3 = new board(boardSize, player3name, 3);
+
+    board1.generateBoard();
+    board2.generateBoard();
+    board3.generateBoard();
+    board4.generateBoard();
+}
+
+startGame();

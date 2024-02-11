@@ -8,14 +8,36 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-top: 120px;
 }
-
+.bingo-numbers {
+    justify-content: space-around;
+}
 .bingo-card {
     width: 443px;
     height: 525px;
     border-radius: 20px;
     background: #320505;
     border: 6px solid #000;
+    margin-top: 20px;
+}
+#verify {
+    border-radius: 50px;
+    background: #000;
+    display: inline-flex;
+    padding: 10px 50px;
+    height: 41px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    font-family: "inter";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border: none;
+    cursor: pointer;
 }
 
 h2 {
@@ -26,6 +48,34 @@ h2 {
     font-size: 35px;
     font-style: normal;
     font-weight: 700;
+    line-height: normal;
+}
+.number-list-5 {
+    margin: 10px;
+}
+
+.number-list-4 {
+    padding: 40px;
+}
+
+.number-list-3 {
+    padding: 60px;
+}
+
+.bingo-call {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+#bingo-call-number {
+    color: #1E1E1E;
+    text-align: center;
+    font-family: Inter;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 800;
     line-height: normal;
 }
 
@@ -39,7 +89,7 @@ h2 {
     background: #ffffff;
     margin: 8px;
     text-align: center;
-    font-family: "Red Hat Display";
+    font-family: "inter";
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
@@ -48,9 +98,30 @@ h2 {
     border: 5px solid #000;
 
 }
-.number-list {
+.number-list-5 {
+    margin: 10px;
+}
+
+.number-list-4 {
+    padding: 40px;
+}
+
+.number-list-3 {
+    padding: 60px;
+}
+
+#number-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin: 8px;
+}
+
+.number-validate {
+    background-color: #6AAA64;
+}
+.turn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

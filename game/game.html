@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bingo Maravilloso</title>
     <link rel="stylesheet" href="game.css">
-    <script type="module" src="game.js"></script>
+
 </head>
 
 <body>
@@ -15,38 +15,44 @@
     </div>
     
     <div class="container">
+
         <div class="bingo-card">
-            <h2>Migdalia</h2>
-            <div class="number-list">
-                <div class="number">1</div>
-                <div class="number">2</div>
-                <div class="number">3</div>
-                <div class="number">4</div>
-                <div class="number">5</div>
-                <div class="number">6</div>
-                <div class="number">7</div>
-                <div class="number">8</div>
-                <div class="number">9</div>
-                <div class="number">10</div>
-                <div class="number">11</div>
-                <div class="number">12</div>
-                <div class="number">13</div>
-                <div class="number">14</div>
-                <div class="number">15</div>
-                <div class="number">16</div>
-                <div class="number">17</div>
-                <div class="number">18</div>
-                <div class="number">19</div>
-                <div class="number">20</div>
-                <div class="number">21</div>
-                <div class="number">22</div>
-                <div class="number">23</div>
-                <div class="number">24</div>
-                <div class="number">25</div>
+            <h2 id="player-name"></h2>
+             <div id="number-list0">
             </div>
         </div>
-    </div>
-    
+
+
+        <div class="bingo-card">
+            <h2 id="player-name"></h2>
+            <div id="number-list1">
+            </div>
+        </div>
+        <div class="bingo-card">
+            <h2 id="player-name"></h2>
+            <div id="number-list2">
+            </div>
+        </div>
+        <div class="bingo-card">
+            <h2 id="player-name"></h2>
+            <div id="number-list3">
+            </div>
+        </div>
+
+
+        <div class="bingo-numbers">
+            <div class="turn-container">
+                <h2 class="turns">Turno</h2>
+                <p id="turns"></p>
+            </div>
+            <div class="bingo-call">
+                <h2 class="turns">Esfera</h2>
+
+                <h2 id="bingo-call-number"></h2>
+                <button id="verify" onclick=bingoCall()>Sacar número</button>
+            </div>
+        </div>
+        <script src='game.js'></script>
 </body>
 
 </html>
