@@ -1,14 +1,13 @@
 @import url(../styles.css);
 
 .container {
-    padding: 50x;
+   
     min-height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    padding-top: 120px;
+
 }
 .bingo-numbers {
     justify-content: space-around;
@@ -19,7 +18,7 @@
     border-radius: 20px;
     background: #320505;
     border: 6px solid #000;
-    margin-top: 20px;
+    margin: 20px 20px ;
 }
 #verify {
     border-radius: 50px;
@@ -110,7 +109,7 @@ h2 {
     padding: 60px;
 }
 
-#number-list {
+#number-list0,#number-list1,#number-list2,#number-list3 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;

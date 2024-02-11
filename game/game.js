@@ -43,21 +43,21 @@ class board {
         numbers.forEach((number) => {
             const div = document.createElement('div');
             div.className = 'number';
-            //div.id = `${this.boardnumber*25 + (numbers.indexOf(number))}`;
+            div.id = `${this.boardnumber*25 + (numbers.indexOf(number))}`;
             div.textContent = `${number}`;
             container.appendChild(div);
         });
         const BingoBoard = document.createElement('div');
         BingoBoard.className = 'bingo-card';
-        const playerName =  document.getElementById('player-name');
+        const playerName =  document.getElementById(`player-name${this.boardnumber}`);
         playerName.innerText = this.getName();
 
         if (this.n == 5) {
-            document.getElementById('number-list').className = 'number-list-5';
+            document.getElementById(`number-list${this.boardnumber}`).className = 'number-list-5';
         } else if (this.n == 4) {
-            document.getElementById('number-list').className = 'number-list-4';
+            document.getElementById(`number-list${this.boardnumber}`).className = 'number-list-4';
         } else if (this.n == 3) {
-            document.getElementById('number-list').className = 'number-list-3';
+            document.getElementById(`number-list${this.boardnumber}`).className = 'number-list-3';
         }
     }
 
@@ -194,10 +194,10 @@ function startGame(){
     board2 = new board(boardSize, player2name, 2);
     board3 = new board(boardSize, player3name, 3);
 
+    board0.generateBoard();
     board1.generateBoard();
     board2.generateBoard();
     board3.generateBoard();
-    board4.generateBoard();
 }
 
 startGame();
