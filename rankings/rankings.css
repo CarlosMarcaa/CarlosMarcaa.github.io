@@ -1,18 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-h1{
-    color: #FFF;
-    font-family: Inter;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    width: 776px;
-    opacity: 0.6;
-    margin-left: 5%;
-    margin-top: 25px;
-    margin-bottom: 25px;
-
-}
+@import url(../styles.css);
 body{
     height: 100vh;
     margin: 0;
@@ -27,13 +14,7 @@ body{
     height: 100%;
     flex-direction: column;
 }
-.header{
-    position: absolute;
-    background: #1E1E1E;
-    width: 100%;
-    display: flex;
-    align-items: center;
-}   
+  
 .ranking-sign{
     color: #D9D9D9;
     font-family: Inter;
@@ -71,13 +52,7 @@ body{
 
 
 }
-.return-button{
-    position: absolute;
-    margin: 50px;
-    cursor: pointer;
-    width: 50px;
-    height: auto;
-}
+
 p{
     margin: 10px 0px;
     padding: 0;

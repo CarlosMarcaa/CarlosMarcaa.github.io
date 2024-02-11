@@ -1,0 +1,56 @@
+@import url(../styles.css);
+
+.container {
+    padding: 50x;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bingo-card {
+    width: 443px;
+    height: 525px;
+    border-radius: 20px;
+    background: #320505;
+    border: 6px solid #000;
+}
+
+h2 {
+    margin: 16;
+    color: #D9D9D9;
+    text-align: center;
+    font-family: "inter";
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+    background: #ffffff;
+    margin: 8px;
+    text-align: center;
+    font-family: "Red Hat Display";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 30px;
+    border: 5px solid #000;
+
+}
+.number-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 8px;
+}

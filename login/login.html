@@ -6,25 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bingo Maravilloso</title>
     <link rel="stylesheet" href="login.css">
-
+    
 </head>
 
 <body>
     <div class="header">
         <h1>Bingo maravilloso</h1>
     </div>
+
     <a href="../index.html"><img class="return-button" src="../assets/arrow-back.svg" alt="return"></a>
+    
     <div class="container">
         <p class ="sign">Inserte los nombres de los jugadores</p>
 
-        <input type="text" name="username" class="username-input" placeholder="Inserte el nombre del jugador 1">
-        <input type="text" name="username" class="username-input" placeholder="Inserte el nombre del jugador 2">
-        <input type="text" name="username" class="username-input" placeholder="Inserte el nombre del jugador 3">
-        <input type="text" name="username" class="username-input" placeholder="Inserte el nombre del jugador 4">
-        <a href="/game/game.html">
-            <button class="empty-button" >Iniciar juego</button>
-        </a>
+        <form id="form"></form>
+            
+            <input type="text" name="username" class = "username-input" id="username-input1" placeholder="Inserte el nombre del jugador 1">
+            <input type="text" name="username" class = "username-input" id="username-input2" placeholder="Inserte el nombre del jugador 2">
+            <input type="text" name="username" class = "username-input" id="username-input3" placeholder="Inserte el nombre del jugador 3">
+            <input type="text" name="username" class = "username-input" id="username-input4" placeholder="Inserte el nombre del jugador 4">
+            <a href="../game/game.html">
+                <button class="empty-button" onclick="save()">Iniciar juego</button>
+            </a>  
+        </form>
+ 
     </div>
+
+    <script>
+        function save() {
+            const player1 = document.getElementById('username-input1')
+            const player2 = document.getElementById('username-input2')
+            const player3 = document.getElementById('username-input3')
+            const player4 = document.getElementById('username-input4')
+
+            const player1Value = player1.value;
+            const player2Value = player2.value;
+            const player3Value = player3.value;
+            const player4Value = player4.value;
+
+            localStorage.setItem('player1', player1Value)
+            localStorage.setItem('player2', player2Value)
+            localStorage.setItem('player3', player3Value)
+            localStorage.setItem('player4', player4Value)
+            
+        }
+
+
+        // const form = document.getElementById('form');
+        // const player1 = document.getElementById('username-input1')
+        // const player2 = document.getElementById('username-input2')
+        // const player3 = document.getElementById('username-input3')
+        // const player4 = document.getElementById('username-input4')
+
+        // form.addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     const player1Value = player1.value;
+        //     const player2Value = player2.value;
+        //     const player3Value = player3.value;
+        //     const player4Value = player4.value;
+
+        //     localStorage.setItem('player1', player1Value)
+        //     localStorage.setItem('player2', player2Value)
+        //     localStorage.setItem('player3', player3Value)
+        //     localStorage.setItem('player4', player4Value)
+        // })
+    </script>
+    
 </body>
 
-</html>
+</html> 
