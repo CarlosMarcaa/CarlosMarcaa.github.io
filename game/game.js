@@ -236,42 +236,44 @@ function getBingoBall(){
    
 }
 
-function finishGame(){
+
+
+// function finishGame(){
     
-    for (let i =0; i < 5; i++){
+//     for (let i =0; i < 5; i++){
         
-        const boardPointer = boardList[i];
+//         const boardPointer = boardList[i];
 
-        const wins =0;
-        if (boardPointer.name == findHighestScore(boardList).name){
-            wins = 1;
-        }
+//         const wins =0;
+//         if (boardPointer.name == findHighestScore(boardList).name){
+//             wins = 1;
+//         }
 
-        const statistics = generatePlayerStatistics(boardPointer);
-        const oldStatistics = localStorage.getItem(`${boardPointer.name}`);
-        if (!oldStatistics === 'undefined'){
-            oldStatistics =  statistics ? JSON.parse(statistics) : [];
-            oldStatistics.score = oldStatistics.score + boardPointer.score;
-            oldStatistics.wins = oldStatistics.wins + wins;
-            statistics = oldStatistics;
-        }
+//         const statistics = generatePlayerStatistics(boardPointer);
+//         const oldStatistics = localStorage.getItem(`${boardPointer.name}`);
+//         if (!oldStatistics === 'undefined'){
+//             oldStatistics =  statistics ? JSON.parse(statistics) : [];
+//             oldStatistics.score = oldStatistics.score + boardPointer.score;
+//             oldStatistics.wins = oldStatistics.wins + wins;
+//             statistics = oldStatistics;
+//         }
         
-        localStorage.setItem( boardPointer.name, statistics);
-    }
-    }
+//         localStorage.setItem( boardPointer.name, statistics);
+//     }
+//     }
     
 
 
-generatePlayerStatistics(board){
-    const wins =0;
-    const score = board.score;
-    const name = board.name;
-    if (board.name == findHighestScore(boardList).name){
-        wins = 1;
-    }
-    const list = {
-        score: score,
-        wins: wins
-    }
-    return list;
-  }
+// generatePlayerStatistics(board){
+//     const wins =0;
+//     const score = board.score;
+//     const name = board.name;
+//     if (board.name == findHighestScore(boardList).name){
+//         wins = 1;
+//     }
+//     const list = {
+//         score: score,
+//         wins: wins
+//     }
+//     return list;
+//   }
